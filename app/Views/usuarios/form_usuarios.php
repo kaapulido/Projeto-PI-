@@ -1,5 +1,4 @@
 
-
     <div class="container mt-5">
       <h3 class="mb-4">Cadastro de Usuários</h3>
       <form>
@@ -56,7 +55,8 @@
             <select class="form-select" id="nivel">
               <option selected>ESCOLHA</option>
               <option value="1">Administrador</option>
-              <option value="2">Usuário</option>
+              <option value="2">Funcionário</option>
+              <option value="2">Cliente</option>
             </select>
           </div>
           <div class="col-md-6">

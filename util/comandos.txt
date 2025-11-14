@@ -21,3 +21,9 @@ Criar uma pasta para o projeto e rodar no cmd:
 
 ## SE DER ERRO DE ROTA (404)
     composer dump-autoload
+
+## Listar arquivos e pastas do diretório atual
+ls
+
+## Navegar até uma pasta
+cd "nome da pasta"
