@@ -53,7 +53,7 @@
           <div class="col-md-6">
             <label for="nivel" class="form-label">Nível de Acesso</label>
             <select class="form-select" id="nivel">
-              <option selected>ESCOLHA</option>
+              <option selected>Escolha</option>
               <option value="1">Administrador</option>
               <option value="2">Funcionário</option>
               <option value="2">Cliente</option>
@@ -88,7 +88,7 @@
           <div class="col-md-6">
             <label for="estado" class="form-label">Estado</label>
             <select class="form-select" id="estado">
-              <option selected>ESCOLHA</option>
+              <option selected>Escolha</option>
               <option value="AC">Acre</option>
               <option value="AL">Alagoas</option>
               <option value="AP">Amapá</option>

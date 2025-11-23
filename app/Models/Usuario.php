@@ -30,7 +30,7 @@ class Usuario
         try {
             $pdo = Database::conectar();
 
-            $senha_criptografa = password_hash($dados['senha'], PASSAWORD_BCRYPT);
+            $senha_criptografa = password_hash($dados['senha'], PASSWORD_BCRYPT);
 
             $sql = "INSERT INTO usuarios (nome, genere, cpf, data_nascimento, celular, rua, numero, complemento, bairro, cidade, cep, estado, email, nivel_acesso, senha)";
             $sql .= " VALUES (:nome, :genere, :cpf, :data_nascimento, :celular, :rua, :numero, :complemento, :bairro, :cidade, :cep, :estado, :email, :nivel_acesso, :senha)";

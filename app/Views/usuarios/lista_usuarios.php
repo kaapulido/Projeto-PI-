@@ -4,7 +4,7 @@
   </div>
 
   <div class="col text-end">
-    <a href="cadastro_cliente.php" class="btn btn-outline-light">
+    <a href="/usuarios/inserir" class="btn btn-outline-light">
       Inserir Novo
     </a>
   </div>
