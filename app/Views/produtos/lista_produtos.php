@@ -11,7 +11,7 @@
             <th>Ações</th>
           </tr>
         </thead>
- <tbody>
+      <tbody>
           <?php foreach ($produtos as $u): ?>
             <tr>
               <td><?= $u['id_produto'] ?></td>

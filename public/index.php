@@ -2,6 +2,7 @@
 // Importa o autoload do Composer para carregar as rotas
 require __DIR__ . '/../vendor/autoload.php';
 
+use App\Controllers\ProdutoController;
 use App\Controllers\UsuarioController;
 
 // Função para renderizar as telas com layout
@@ -49,9 +50,14 @@ $controller->listar();
     render('usuarios/form_usuarios.php', ['title' => 'Cadastrar Usuários!']);
 }
 
+else if ($url == "/produtos") {
+ // Cria uma instância do Controller e chama a função de listar
+$controller = new ProdutoController();
+$controller->listar();
+}
 // Produtos 
 else if ($url == "/produtos") {
-    render('produtos/lista_produtos.php', ['title' => 'Lista de Produtos!']);
+    render('produtos/lista_produtos.php', ['title' => 'Listagem de Produtos!']);
 } else if ($url == "/produtos/inserir") {
     render('produtos/form_produtos.php', ['title' => 'Cadastrar Produtos!']);
 }

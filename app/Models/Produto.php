@@ -32,13 +32,14 @@ class Produto
 
             $senha_criptografa = password_hash($dados['senha'], PASSWORD_BCRYPT);
 
-            $sql = "INSERT INTO produtos (nome, descricao, valor_mensal)";
-            $sql .= " VALUES (:Plano Club 1, :Edição básico, :49.90)";
+            $sql = "INSERT INTO produtos (id_produto, nome, descricao, valor_mensal)";
+            $sql .= " VALUES (:1, :Plano Club 1, :Edição básico, :49.90)";
 
             // Prepara o SQL para ser inserido no BD e limpa códigos maliciosos
             $stmt = $pdo->prepare($sql);
 
             // Passa as variaveis para SQL
+            $stmt->bindParam(':id_produto', $dados['id_produto'], PDO::PARAM_STR);
             $stmt->bindParam(':nome', $dados['nome'], PDO::PARAM_STR);
             $stmt->bindParam(':descricao', $dados['descricao'], PDO::PARAM_STR);
             $stmt->bindParam(':valor_mensal', $dados['valor_mensal'], PDO::PARAM_STR);
