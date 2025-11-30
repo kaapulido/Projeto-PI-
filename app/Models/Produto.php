@@ -10,43 +10,46 @@ use PDOException;
 class Produto
 {
     // Aqui declaramos uma função para cada operação do CRUD
-    // Busca todos os usuários no BD
+
+    // Busca todos os produtos no BD
     public static function buscarTodos()
     {
-        // Primeiro vamos conectar no banco de dados
-        // Precisamos importar o PDO antes de criar a classe
-        // Como vamos utilizar arqivo DATABASE, importamos ele também
+        // Conecta no banco
         $pdo = Database::conectar();
 
-        // Geremos o sript SQL de consulta
+        // Script SQL de consulta
         $sql = "SELECT * FROM produtos";
 
-        // Retornamos o resultado da consulta
+        // Retorna todos os produtos
         return $pdo->query($sql)->fetchAll();
     }
 
+    // Salvar produto no banco
     public static function salvar($dados)
     {
         try {
             $pdo = Database::conectar();
 
-            $senha_criptografa = password_hash($dados['senha'], PASSWORD_BCRYPT);
+            $sql = "INSERT INTO produtos 
+                    (nome, descricao, valor_mensal, categoria) 
+                    VALUES 
+                    (:nome, :descricao, :valor_mensal, :categoria)";
 
-            $sql = "INSERT INTO produtos (id_produto, nome, descricao, valor_mensal)";
-            $sql .= " VALUES (:1, :Plano Club 1, :Edição básico, :49.90)";
-
-            // Prepara o SQL para ser inserido no BD e limpa códigos maliciosos
             $stmt = $pdo->prepare($sql);
 
-            // Passa as variaveis para SQL
-            $stmt->bindParam(':id_produto', $dados['id_produto'], PDO::PARAM_STR);
+            // Passa os valores corretos
             $stmt->bindParam(':nome', $dados['nome'], PDO::PARAM_STR);
             $stmt->bindParam(':descricao', $dados['descricao'], PDO::PARAM_STR);
             $stmt->bindParam(':valor_mensal', $dados['valor_mensal'], PDO::PARAM_STR);
+            $stmt->bindParam(':categoria', $dados['categoria'], PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            return (int) $pdo->lastInsertId();
+
         } catch (PDOException $e) {
             echo "Erro ao inserir: " . $e->getMessage();
+            exit; // interrompe execução e mostra erro
         }
     }
 }
-
-

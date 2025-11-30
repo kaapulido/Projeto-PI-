@@ -1,4 +1,5 @@
 <?php
+session_start(); // Inicia a sessão
 // Importa o autoload do Composer para carregar as rotas
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -50,14 +51,24 @@ $controller->listar();
     render('usuarios/form_usuarios.php', ['title' => 'Cadastrar Usuários!']);
 }
 
+// Verifica alem da rota o tipo de pedido
+else if ($url == "/usuarios/salvar" && $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+    $controller = new UsuarioController();
+    $controller->salvar();
+}
+
 else if ($url == "/produtos") {
  // Cria uma instância do Controller e chama a função de listar
 $controller = new ProdutoController();
 $controller->listar();
 }
 // Produtos 
-else if ($url == "/produtos") {
-    render('produtos/lista_produtos.php', ['title' => 'Listagem de Produtos!']);
-} else if ($url == "/produtos/inserir") {
+else if ($url == "/produtos/inserir") {
     render('produtos/form_produtos.php', ['title' => 'Cadastrar Produtos!']);
 }
+
+else if ($url == "/produtos/salvar" && $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+    $controller = new ProdutoController();
+    $controller->salvar();
+}
+

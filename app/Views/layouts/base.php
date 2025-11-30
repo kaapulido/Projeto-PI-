@@ -36,12 +36,12 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a class="dropdown-item" href="/listagem-usuarios.html"
+                  <a class="dropdown-item" href="/usuarios"
                     >Listagem de usuários</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/cadastro-usuarios.html"
+                  <a class="dropdown-item" href="/usuarios/inserir"
                     >Cadastro de usuários</a
                   >
                 </li>
@@ -58,14 +58,12 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a class="dropdown-item" href="/listagem-produtos.html"
-                    >Listagem de produtos</a
-                  >
+                  <a class="dropdown-item" href="/produtos"
+                    >Listagem de produtos</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/cadastro-produtos.html"
-                    >Cadastro de produtos</a
-                  >
+                  <a class="dropdown-item" href="/produtos/inserir"
+                    >Cadastro de produtos</a>
                 </li>
               </ul>
             </li>

@@ -4,8 +4,7 @@
   </div>
 
   <div class="col text-end">
-    <a href="/usuarios/inserir" class="btn btn-outline-light">
-      Inserir Novo
+    <a href="/usuarios/inserir" class="btn btn-cadastrar">Inserir Novo
     </a>
   </div>
 </div>

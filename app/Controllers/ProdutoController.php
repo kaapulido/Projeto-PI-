@@ -2,15 +2,12 @@
 
 namespace App\Controllers;
 
-// Importar o model de Usuario
 use App\Models\Produto;
 
 class ProdutoController
 {
-    // Busca os usuarios e chama a tela e listar
     public function listar()
     {
-        // Chama a model e a função que busca os dados e armazena na var
         $lista_produtos = Produto::buscarTodos();
 
         render("produtos/lista_produtos.php", [
@@ -18,8 +15,30 @@ class ProdutoController
             'produtos' => $lista_produtos
         ]);
     }
+
+    public function salvar()
+    {
+        $dados = [
+            'nome'         => filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS),
+            'descricao'    => filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_SPECIAL_CHARS),
+            'valor_mensal' => filter_input(INPUT_POST, 'valor_mensal', FILTER_SANITIZE_SPECIAL_CHARS),
+            'categoria'    => filter_input(INPUT_POST, 'categoria', FILTER_SANITIZE_SPECIAL_CHARS),
+        ];
+
+        $erros = [];
+
+        if (empty($dados['nome'])) {
+            $erros[] = 'O campo NOME não pode ficar em branco!';
+        }
+
+        if (empty($erros)) {
+            Produto::salvar($dados);
+            header("Location: /produtos");
+        } else {
+            $_SESSION['erros'] = $erros;
+            $_SESSION['dados'] = $dados;
+            header("Location: /produtos/inserir");
+        }
+    }
 }
-
-
-
 

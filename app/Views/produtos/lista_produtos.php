@@ -8,6 +8,7 @@
             <th>Nome</th>
             <th>Descrição</th>
             <th>Valor mensal</th>
+            <th>Categoria</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -18,6 +19,7 @@
               <td><?= $u['nome'] ?></td>
               <td><?= $u['descricao'] ?></td>
               <td><?= $u['valor_mensal'] ?></td>
+              <td><?= $u['categoria'] ?></td>
 
               <td>
                 <button class="btn-editar">Editar</button>

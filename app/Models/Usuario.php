@@ -42,7 +42,7 @@ class Usuario
             $stmt->bindParam(':nome', $dados['nome'], PDO::PARAM_STR);
             $stmt->bindParam(':genere', $dados['genere'], PDO::PARAM_STR);
             $stmt->bindParam(':cpf', $dados['cpf'], PDO::PARAM_STR);
-            $stmt->bindParam(':data_nascimento', $dados['data_nascimento'], PDO::PARAM_STR);
+            $stmt->bindParam(':data_nascimento', $dados['data_nascimento']);
             $stmt->bindParam(':celular', $dados['celular'], PDO::PARAM_STR);
             $stmt->bindParam(':rua', $dados['rua'], PDO::PARAM_STR);
             $stmt->bindParam(':numero', $dados['numero'], PDO::PARAM_STR);
@@ -53,7 +53,13 @@ class Usuario
             $stmt->bindParam(':estado', $dados['estado'], PDO::PARAM_STR);
             $stmt->bindParam(':email', $dados['email'], PDO::PARAM_STR);
             $stmt->bindParam(':nivel_acesso', $dados['nivel_acesso'], PDO::PARAM_STR);
-            $stmt->bindParam(':senha', $dados['senha'], PDO::PARAM_STR);
+            $stmt->bindParam(':senha', $senha_criptografa);
+
+            // Executa o MYSQL
+            $stmt->execute();
+            // Retorna o ID de registro no BD
+            return (int) $pdo->lastInsertId();
+            
         } catch (PDOException $e) {
             echo "Erro ao inserir: " . $e->getMessage();
         }
